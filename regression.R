@@ -1,6 +1,6 @@
 library(readr)
 library(dplyr)
-data <- read_csv2("RAIS_CTPS_CAGED_2024_MOV.csv")
+data <- read.csv2("RAIS_CTPS_CAGED_2024_MOV.csv", stringsAsFactors = FALSE)
 View(data)
 
 data <- data[c("continente", "uf", "sexo", "nivel_instrucao", "salario", "faixa_etaria")]
