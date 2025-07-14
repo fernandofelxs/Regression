@@ -81,13 +81,14 @@ data <- data %>%
   ))
 table(data$regiao)
 
-summary(data$salario)
-
 data$sexo <- factor(data$sexo, levels = c("Masculino", "Feminino"))
 data$continente <- factor(data$continente, levels = c("AMÉRICA DO SUL", "ÁFRICA", "AMÉRICA CENTRAL E CARIBE", "AMÉRICA DO NORTE", "ÁSIA", "EUROPA", "OCEANIA"))
 data$regiao <- factor(data$regiao, levels = c("Sudeste", "Sul", "Centro-Oeste", "Nordeste", "Norte"))
 data$nivel_instrucao <- factor(data$nivel_instrucao, levels = c("Sem instrução ou fundamental incompleto", "Fundamental completo", "Médio incompleto", "Médio completo", "Superior incompleto", "Superior completo", "Pós-graduação"))
 data$faixa_etaria <- factor(data$faixa_etaria, levels = c("Menos de 18 anos", "18 a 24 anos", "25 a 29 anos", "30 a 39 anos", "40 a 49 anos", "50 a 64 anos", "65 anos ou mais"))
+
+data$salario <- as.numeric(data$salario)
+summary(data$salario)
 
 modelo <- lm(salario ~ sexo + continente + regiao + nivel_instrucao + faixa_etaria, data = data)
 summary(modelo)
